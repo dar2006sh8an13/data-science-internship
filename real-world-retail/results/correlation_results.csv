@@ -1,0 +1,6 @@
+measure_x,measure_y,pearson_r
+Sales,Profit,0.4791
+Discount,Profit,-0.2195
+Discount,Sales,-0.0282
+Quantity,Sales,0.2008
+Quantity,Profit,0.0663
