@@ -13,7 +13,7 @@ OUT = ROOT / "results"
 DATA.mkdir(exist_ok=True)
 OUT.mkdir(exist_ok=True)
 CSV = DATA / "Sample-Superstore.csv"
-URL = "https://raw.githubusercontent.com/vaibhavisnayak/data-analysis/main/Sample%20-%20Superstore.csv"
+URL = "https://raw.githubusercontent.com/thummam/superstore-sales-dashboard/main/data/raw_superstore.csv"
 
 
 def load():
