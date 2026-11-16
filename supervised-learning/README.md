@@ -1,43 +1,29 @@
 # Project 2 — Supervised Learning & Model Evaluation
 
-Train and compare three supervised **classification** models using scikit-learn's built-in Wisconsin Breast Cancer dataset (569 samples, 30 numeric features). No external data download or private data is needed.
+Train and compare Logistic Regression, Decision Tree, and Random Forest classifiers using scikit-learn's built-in Wisconsin Breast Cancer dataset (569 samples, 30 numeric features). Educational demonstration only; not suitable for medical diagnosis.
 
-> Educational demonstration only. The models are not suitable for medical diagnosis or clinical decision-making.
-
-## Models
-- Logistic Regression (linear classification baseline)
-- Decision Tree Classifier
-- Random Forest Classifier
-
-**Why not Linear Regression?** Linear Regression predicts continuous values. This project predicts two discrete classes, so Logistic Regression is the relevant linear classification baseline.
-
-## Workflow
-1. Load the built-in dataset.
-2. Make a stratified 80/20 train/test split (`random_state=42`).
-3. Fit preprocessing on training data only with a scikit-learn `Pipeline`.
-4. Train each classifier and predict on the held-out test set.
-5. Evaluate accuracy, precision, recall, F1, confusion matrix, ROC-AUC.
-6. Save comparison CSV, classification reports, confusion-matrix charts, and a combined ROC plot.
-
-## Setup
-From the repository root:
-
+## Run
+From repository root:
 ```bash
 pip install -r supervised-learning/requirements.txt
 python supervised-learning/train.py
-```
-
-Outputs are written to `supervised-learning/results/`. Results are **not** precomputed in the repository; run the script to reproduce them.
-
-## Tests
-```bash
 pytest -q supervised-learning/tests
-```
+``
 
-## Files
-- `train.py`: model training, evaluation and plots
-- `requirements.txt`: dependencies
-- `tests/test_train.py`: reproducibility and evaluation checks
+The script generates confusion matrices, a combined ROC curve, per-model classification reports, and a comparison CSV under `supervised-learning/results/`.
 
-## Notes
-ROC-AUC uses probability estimates for the positive class (class 1, benign). The train/test split is stratified and shared by all three models. Reported test metrics are descriptive comparisons on one held-out split, not estimates of clinical utility.
+## Evaluation (held-out test set)
+Stratified 80/20 split, random_state=42 (455 train rows, 114 test rows). Class 1 is benign.
+
+| Model | Accuracy | Precision | Recall | F1 | ROC-AUC |
+|---|---:|---:|---:|---:|---:|
+| Logistic Regression | 0.9825 | 0.9861 | 0.9861 | 0.9861 | 0.9954 |
+| Random Forest | 0.9561 | 0.9589 | 0.9722 | 0.9655 | 0.9940 |
+| Decision Tree | 0.9035 | 0.9420 | 0.9028 | 0.9220 | 0.9373 |
+
+These are results from one fixed hold-out split, not cross-validation or clinical performance claims. Logistic Regression performed best on this particular split. The dataset and model are for learning only.
+
+## Contents
+- `train.py`: data split, model training, evaluation, plots and reports
+- `tests/test_train.py`: automated tests
+- `results/`: generated metrics and classification reports
