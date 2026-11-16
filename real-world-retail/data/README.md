@@ -1,0 +1,1 @@
+The raw Sample Superstore CSV is downloaded here automatically by python analyze.py. It is excluded from Git to avoid duplicating a third-party dataset. See the project README for source and attribution.
